@@ -1,0 +1,161 @@
+
+Game
+* Does not require a goal to start with
+* First dev goal does not require armies
+* Over population can cause riots and people die, output drops
+* Entities, such as oilwell requires people
+* If people unhappy they do not breed - population will decline
+* 1 day = 1 month
+* After 60-80 days people die
+* People pay tax, user has money
+* Start with 20 people?
+* System is based on events and ticks - a tick happens every 1 minute which checks events, triggers them and then finishes its process
+* Aim is to make the civilisation "stable" so can leave for long time
+* If not stable everyone will die + have to start again on a new island
+* Discovery ships need to claim land/discover land before any other ships can go there
+
+
+starting the game (first 12 hours)
+* Start with 20 people
+* Make 1 wood farm (2 staff)
+	= Get wood to make iron mine
+* Make 1 iron mine (4 staff)
+	= Get iron to make shipping yard
+* Make shipping yard (6 staff)
+	= Can now make a simple discovery boat (level=1, type=discovery, people=2)
+* Make discovery level 1 boat (2 staff)
+	.. 14 people used
+	.. 6 people unemployed
+* Try and find another island
+	= if found another island can stamp name on it (because discovery ship)
+
+
+
+Map Generation
+
+lng lat based on squared areas
+islands cannot be <3 squares close
+each new user is at least 30 squares away from anyone else
+
+
+
+Entities
+
+* Person
+	- name
+	- works at - they never leave where they work unless they die (keeps it easier)
+	- sex
+	- age
+	- house lives in
+	- breed with (another opposite sex person)
+	- happyness level (-10 to +10)
+	- happyness reasons (more than one reason, might be happy or be sad because no jobs, no food, no wife)
+	- intelligence (1-10) - also depends what jobs they can get, dumber people are more happy
+	- total job score (1-10)
+	- pays tax based on job score, higher level the more tax they pay = more money user makes
+
+* House
+	- someone lives here
+	- total space / 2 = number of people that can live there
+
+* Mines / Oilwells
+	- levels (1-5), higher the number the more output and the more jobs
+	- job score (4 - low)
+	- requires people
+	- more people = more output
+	- output
+	- maximum number of people
+	- materials required to build (level 1 = just wood)
+	- if stockpile full then cannot mine
+
+* Farms 
+	- levels (1-5), higher the number the more output and the more jobs
+	- job score (3 - low)
+	- type of farm, animal, crops, wood*
+	- output (based on each person)
+	- maybe farms just keep people happy
+
+* Shipyard
+	- levels (1-5), higher the number the quicker output for a ship and the better level of ship can be made
+	- job score (5 - medium)
+	- build ships
+	- people work here
+
+* Stockpile
+	- holds resources
+	- space
+	- amount of resources can be held
+
+* Ship
+	- type of ship, spy, discovery/expedition, war, collonisation
+	- level of ship (1-20)
+	- can hold people, number depending on type of ship
+	- level of ship
+	- speed per hour (how many squares per hour)
+	- location x/y
+	- destination x/y
+	- mission (depends on the type of ship)
+	- build time in hours
+	- attack value
+	- defense value
+	- materials, requires materials to build ship, e.g. iron, wood
+	- maximum distance (based on type and level of ship)
+
+
+Other ideas
+* The more jobs available the more chance of people breeding
+* Defence
+* Barracks - turn people into Soilders, good job
+* Science/researcher - to discover more modern (higher level) ships?
+* Natural disasters - "stuns" peoples happyness for a time, kills people, etc...
+* Random names for islands
+* Islands that are inhibatible but have lots of resources on them, e.g. a rock island, normally just 1 cell big
+* Some islands can be either very rich and low in some resources or just very low in all resources
+* Weather
+
+
+Jobs
+* Naval
+* Marine
+* Mine worker
+* Oil rigger
+* Farmer
+* Shipyarder
+
+
+
+Happyness
+* Hunger
+* OVer population
+* Not enough jobs
+
+
+
+Islands
+* Owned by
+* Discovered by
+* Random resources per island, resources will "run out". When they run out the output is at a fixed low value, so its possible with time to recover
+* All islands have all the same resources but in different amounts
+* Random amount of space on island (size of available space on island)
+* Maximum population, each entity (e.g. person, mine) has a "spaced used", person=1, house=10, oilwell=20, coalmine=25
+* Can name the island
+* Islands belong to a user
+* Islands can be taken over by other people
+
+
+Events
+* Add events (for each tick)
+	- Build level 3 transport ship
+	- Send ship #123 to x/y
+	- Breed child
+	- Build oilwell
+	- Natural disaster - reduce % of peoples happyness for a certain amount of time
+
+
+Armies
+
+
+
+Ideas
+* Discover islands - all islands are hidden until you discover them with ships
+* Mining - build mining industries to mine resources
