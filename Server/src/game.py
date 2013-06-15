@@ -6,12 +6,14 @@ from mongokit import Document, Connection
 from admin import *
 from server import *
 from ticker import *
+from command import *
 
+from controllers.worlds_controller import WorldsController
+
+from models.player import Player
 from models.world import World
 from models.island import Island
 from models.event import Event
-
-connection = False
 
 
 class Game():
@@ -21,10 +23,16 @@ class Game():
 		return
 
 	def init(self):
-		print 'Game started';
+		print('Game started')
 
 		#Database connection
 		self.database()
+
+		#Controllers
+		self.controllers();
+
+		#Command
+		self.command();
 
 		#Game ticker
 		thread.start_new_thread( self.ticker, () )
@@ -38,34 +46,38 @@ class Game():
 		return
 
 
+
+	def controllers(self):
+		self.WorldsController = WorldsController(self)
+		return
+
+
 	#Database connection
 	def database(self):
-		print 'Loading database'
+		print('Loading database')
 		self.connection = Connection()
 		self.connection.register([World])
 		self.connection.register([Island])
 		self.connection.register([Event])
-		return
+		self.connection.register([Player])
 
 
 	def admin(self):
-		#Admin CLI
 		self.admin = Admin(self)
 		self.admin.init()
-		return
 
 
 	def server(self):
 		self.server = Server(self)
 		self.server.init()
-		return
 
 
 	def ticker(self):
 		self.ticker = Ticker(self)
 		self.ticker.init()
-		return
 
 
-
+	def command(self):
+		self.command = Command(self)
+		self.command.init()
 

@@ -11,7 +11,7 @@ class Admin():
 		print 'Admin initalised'
 		print '> Type help'
 
-		self.createWorld()
+		#self.cmd('create world')
 
 		while True:
 			cmd = raw_input(":");
@@ -19,18 +19,12 @@ class Admin():
 			if cmd == 'quit' or cmd == 'q' or cmd == 'exit':
 				print "See ya!"
 				break
-			elif cmd == 'ticks':
-				print 'Ticks elapsed: '+str(self.Game.ticker.ticks())
-			elif cmd == 'list worlds':
-				self.listWorlds()
-			elif cmd == 'list events':
-				self.listEvents()
-			elif cmd == 'show world':
-				self.showWorld()
-			elif cmd == 'create world':
-				self.createWorld()
-			#elif cmd == 'create player':
-		return
+			else:
+				self.Game.command.run(self, cmd)
+				
+
+	def send(self, text):
+		print(text)
 
 
 	def listWorlds(self):
@@ -55,46 +49,6 @@ class Admin():
 		return;
 
 
-	def createWorld(self):
-		#Create world
-		collection = self.Game.connection.worlds
-		world = collection.World()
-		world.create()
-
-		#Add islands to world
-		collection = self.Game.connection.islands
-		island = collection.Island()
-		island.create(world)
-
-		#print world
-		for row in world['cells']:
-			for col in row:
-				if col:
-					print('#'),
-				else:
-					print('.'),
-			print
-
-		#islands
-		for island in world['islands']:
-			print island['name']
-			print '  total cells: '+str(len(island['cells']))
-			print
-
-			#resources
-			print '  Resources'
-			print '  ----------------------'
-			_resources = island.resources()
-			for r in _resources:
-				print '  '+r+': '+str(_resources[r])
-
-
-		return
-
-
-		#self.Game.connection.worlds.insert({ 'name':'arse' })
-		print "Created new world"
-		return
 
 
 	def createPlayer(self):
