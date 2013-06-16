@@ -28,11 +28,11 @@ class SimpleCommandProcessor:
 		self.Game = Game
 		pass
 
-	def process(self, line, request):
+	def process(self, command, request):
 		"""Process a command"""
-		args = line.split(' ')
-		command = args[0].lower()
-		args = args[1:]
+		#args = line.split(' ')
+		#command = args[0].lower()
+		#args = args[1:]
 
 		if command == 'quit':
 			request.send('OK, SEE YOU LATER\n\r')

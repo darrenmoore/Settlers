@@ -9,6 +9,7 @@ from ticker import *
 from command import *
 
 from controllers.worlds_controller import WorldsController
+from controllers.helps_controller import HelpsController
 
 from models.player import Player
 from models.world import World

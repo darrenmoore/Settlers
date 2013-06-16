@@ -23,23 +23,24 @@ class WorldsController(AppController):
 		for row in world['cells']:
 			for col in row:
 				if col:
-					print('#'),
+					self.output('#',False)
 				else:
-					print('.'),
-			print
+					self.output('.',False)
+			self.output('')
 
 		#islands
 		for island in world['islands']:
-			print island['name']
-			print '  total cells: '+str(len(island['cells']))
-			print
+			self.output(island['name'])
+			self.output('  total cells: '+str(len(island['cells'])))
+			self.output('')
 
 			#resources
-			print '  Resources'
-			print '  ----------------------'
+			self.output('  Resources')
+			self.output('  ----------------------')
+
 			_resources = island.resources()
 			for r in _resources:
-				print '  '+r+': '+str(_resources[r])
+				self.output('  '+r+': '+str(_resources[r]))
 
 
 		return

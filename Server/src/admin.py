@@ -12,6 +12,7 @@ class Admin():
 		print '> Type help'
 
 		#self.cmd('create world')
+		self.Game.command.run(self, 'help')
 
 		while True:
 			cmd = raw_input(":");
@@ -21,10 +22,10 @@ class Admin():
 				break
 			else:
 				self.Game.command.run(self, cmd)
-				
+
 
 	def send(self, text):
-		print(text)
+		print(text),
 
 
 	def listWorlds(self):
