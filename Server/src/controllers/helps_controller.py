@@ -4,4 +4,8 @@ class HelpsController(AppController):
 
 
 	def show(self):
-		print "Help!"
+		self.output('User help -----')
+
+
+	def admin_show(self):
+		self.output('Admin help -----')

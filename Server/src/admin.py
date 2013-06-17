@@ -12,7 +12,7 @@ class Admin():
 		print '> Type help'
 
 		#self.cmd('create world')
-		self.Game.command.run(self, 'help')
+		self.Game.command.run(self, 'login')
 
 		while True:
 			cmd = raw_input(":");
